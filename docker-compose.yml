@@ -17,19 +17,19 @@ services:
   #     depends_on:
   #       - api
   app:
-    image: berichtgeving/berichtgeving-frontend:berichtgeving-frontend-6
-    container_name: react
+    image: berichtgeving/berichtgeving-frontend:berichtgeving-frontend-10
+    container_name: client
     ports:
-      - '3000:3000'
+      - '3001:3001'
     expose:
-      - '3000'
+      - '3001'
     volumes:
       - ~/build:/var/www/html
     depends_on:
       - 'api'
   api:
-    image: berichtgeving/berichtgeving-backend:berichtgeving-backend-7
-    container_name: express
+    image: berichtgeving/berichtgeving-backend:berichtgeving-backend-11
+    container_name: server
     restart: always
     ports:
       - 5000:5000
@@ -54,6 +54,7 @@ services:
   #     command: certonly --webroot --webroot-path=/var/www/html --email uzunaliegemen@gmail.com --agree-tos --no-eff-email --force-renewal  -d www.cyfamilia.nl
   db:
     image: postgres:latest
+    container_name: database
     restart: always
     environment:
       - POSTGRES_PASSWORD=dbpassword
