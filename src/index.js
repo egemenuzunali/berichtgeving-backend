@@ -3,6 +3,6 @@ require('dotenv').config({ path: __dirname + '/../.env' });
 
 const server = createServer();
 
-server.listen({ port: process.env.PORT }).then(({ url }) => {
+server.listen({ port: 5000 }).then(({ url }) => {
 	console.log(`🚀  Server ready at ${url}`);
 });
