@@ -1,0 +1,22 @@
+{
+	"name": "berichtgeving-backend",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"scripts": {
+		"dev": "NODE_ENV=dev nodemon -e js,graphql -x node --inspect src/index.js",
+		"prod": "NODE_ENV=production PORT=8000 node src/index.js"
+	},
+	"dependencies": {
+		"apollo-server": "^2.11.0",
+		"dotenv": "^8.2.0",
+		"graphql": "^14.6.0",
+		"pg": "^7.18.2",
+		"prettier": "^1.19.1",
+		"sequelize": "^5.21.5"
+	},
+	"devDependencies": {
+		"eslint": "^6.8.0",
+		"nodemon": "^2.0.2"
+	}
+}
