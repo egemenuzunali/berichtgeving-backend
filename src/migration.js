@@ -1,4 +1,4 @@
-const kernprocess = require('../kernprocess.js');
+const kernprocess = require('./kernprocess.js');
 
 // needs refactoring
 

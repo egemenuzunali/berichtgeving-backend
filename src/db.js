@@ -120,7 +120,7 @@ Direction.belongsTo(Cluster, { foreignKey: 'clusterId' });
 CoreProcess.belongsTo(Cluster, { foreignKey: 'clusterId' });
 CoreProcess.belongsTo(Direction, { foreignKey: 'directionId' });
 
-Conn.sync({ force: true }).then(() => {});
+// Conn.sync({ force: true }).then(() => {});
 Conn.sync()
 	.then(() => {
 		console.log('successfully accepted connection');

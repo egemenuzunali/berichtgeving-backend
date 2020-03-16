@@ -1,4 +1,4 @@
-const injectKernProcessens = require('./migration');
+const injectKernProcessens = require('../migration');
 
 const Mutations = {
 	async addUser(parent, args, ctx, info) {

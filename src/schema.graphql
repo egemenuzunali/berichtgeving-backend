@@ -5,27 +5,27 @@ type Mutation {
 
 type Query {
 	getAllUsers: [User]!
-	getAllClusters: [cluster]!
-	getallDirections: [direction]!
-	getDirectionByCluster(clusterId: ID!): [direction]!
-	getAllCoreProcesses(directionId: ID!): [coreProcess]!
+	getAllClusters: [Cluster]!
+	getallDirections: [Direction]!
+	getDirectionByCluster(clusterId: ID!): [Direction]!
+	getAllCoreProcesses(directionId: ID!): [CoreProcess]!
 }
 
 type SuccessMessage {
 	message: String!
 }
 
-type cluster {
+type Cluster {
 	id: ID!
 	description: String!
 }
-type coreProcess {
+type CoreProcess {
 	id: ID!
 	description: String!
 	crucialProcess: Boolean!
 }
 
-type direction {
+type Direction {
 	description: String!
 	id: ID!
 }
