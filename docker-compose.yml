@@ -17,7 +17,7 @@ services:
   #     depends_on:
   #       - api
   app:
-    image: berichtgeving/berichtgeving-frontend:berichtgeving-frontend-10
+    image: berichtgeving/berichtgeving-frontend:18
     container_name: client
     ports:
       - '3001:3001'
@@ -28,7 +28,7 @@ services:
     depends_on:
       - 'api'
   api:
-    image: berichtgeving/berichtgeving-backend:berichtgeving-backend-11
+    image: berichtgeving/berichtgeving-backend:15
     container_name: server
     restart: always
     ports:

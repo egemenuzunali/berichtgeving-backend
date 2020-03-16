@@ -13,6 +13,7 @@ const User = Conn.define('user', {
 	},
 });
 
+// only uncomment this next line if you want to drop all tables from your DB !! THIS FLUSHES ALL YOUR DATA DOWN THE DRAIN
 // Conn.sync({ force: true }).then(() => {});
 Conn.sync()
 	.then(() => {
