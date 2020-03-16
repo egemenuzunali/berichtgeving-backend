@@ -1,3 +1,5 @@
+const createClusters = require('./migration');
+
 const Mutations = {
 	async addUser(parent, args, ctx, info) {
 		const { name } = args;
@@ -8,6 +10,11 @@ const Mutations = {
 			info
 		);
 		return user;
+	},
+
+	async runMigration(parent, args, ctx, info) {
+		await createClusters(ctx.db);
+		return { message: 'Success !!' };
 	},
 };
 

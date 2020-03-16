@@ -1,11 +1,35 @@
 type Mutation {
 	addUser(name: String!): User!
+	runMigration: SuccessMessage!
 }
 
 type Query {
 	getAllUsers: [User]!
+	getAllClusters: [cluster]!
+	getallDirections: [direction]!
+	getDirectionByCluster(clusterId: ID!): [direction]!
+	getAllCoreProcesses(directionId: ID!): [coreProcess]!
+}
+
+type SuccessMessage {
+	message: String!
+}
+
+type cluster {
+	id: ID!
+	description: String!
+}
+type coreProcess {
+	id: ID!
+	description: String!
+	crucialProcess: Boolean!
+}
+
+type direction {
+	description: String!
+	id: ID!
 }
 
 type User {
-	name: String
+	name: String!
 }
