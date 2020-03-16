@@ -2,7 +2,7 @@ const kernprocess = require('../kernprocess.js');
 
 // needs refactoring
 
-const createCluster = async (db) => {
+const injectKernProcessen = async (db) => {
 	for (let index = 0; index < kernprocess.clusters.length; index++) {
 		const createdCluster = await db.models.cluster.create({
 			description: kernprocess.clusters[index].naam,
@@ -33,4 +33,4 @@ const createCluster = async (db) => {
 	return;
 };
 
-module.exports = createCluster;
+module.exports = injectKernProcessen;

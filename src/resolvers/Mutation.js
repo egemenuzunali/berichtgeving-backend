@@ -1,4 +1,4 @@
-const createClusters = require('./migration');
+const injectKernProcessens = require('./migration');
 
 const Mutations = {
 	async addUser(parent, args, ctx, info) {
@@ -12,8 +12,8 @@ const Mutations = {
 		return user;
 	},
 
-	async runMigration(parent, args, ctx, info) {
-		await createClusters(ctx.db);
+	async runMigration(parent, args, ctx) {
+		await injectKernProcessens(ctx.db);
 		return { message: 'Success !!' };
 	},
 };
