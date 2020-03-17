@@ -44,6 +44,5 @@ const userCreate = () => {
 setTimeout(userCreate, 750);
 
 rl.on('close', function() {
-	console.log('\nBYE BYE !!!');
 	process.exit(0);
 });
