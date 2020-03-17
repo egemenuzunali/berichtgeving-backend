@@ -1017,7 +1017,16 @@ const kernprocess = {
 						},
 					],
 				},
-				{ naam: 'IV', kernprocessen: [] },
+				{
+					naam: 'IV',
+					kernprocessen: [
+						{
+							naam:
+								'Ondersteuning van de voor de verschillende directies benoemde kritieke bedrijfsprocessen ',
+							crucial: false,
+						},
+					],
+				},
 				{
 					naam: 'Kunst en Cultuur',
 					kernprocessen: [

@@ -17,18 +17,24 @@ function createServer() {
 			Cluster: {
 				async directions(parent, args, ctx, info) {
 					console.log(parent.id);
-					const client = await ctx.db.models.direction.findAll({
-						where: { clusterId: parent.id },
-					});
+					const client = await ctx.db.models.direction.findAll(
+						{
+							where: { clusterId: parent.id },
+						},
+						info
+					);
 					return client;
 				},
 			},
 			Direction: {
 				async coreProcesses(parent, args, ctx, info) {
 					console.log(parent.id);
-					const client = await ctx.db.models.coreprocess.findAll({
-						where: { directionId: parent.id },
-					});
+					const client = await ctx.db.models.coreprocess.findAll(
+						{
+							where: { directionId: parent.id },
+						},
+						info
+					);
 					return client;
 				},
 			},
