@@ -33,6 +33,10 @@ const Query = {
 			info
 		);
 	},
+
+	async getCurrentUser (parent, args, ctx) {
+		return ctx.user
+	}
 };
 
 module.exports = Query;
