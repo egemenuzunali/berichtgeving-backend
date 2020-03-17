@@ -29,8 +29,7 @@ const Mutations = {
 		}
 
 		const token = auth.createToken(user.dataValues);
-		console.log(token)
-		await ctx.db.models.token.create({ token: 'test' });
+		await ctx.db.models.token.create({ token });
 
 		return {
 			token,
