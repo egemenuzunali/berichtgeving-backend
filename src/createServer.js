@@ -1,8 +1,10 @@
 const fs = require('fs');
+const _ = require('lodash')
 const { ApolloServer, gql } = require('apollo-server');
 const Mutation = require('./resolvers/Mutation');
 const Query = require('./resolvers/Query');
 const db = require('./db');
+const auth = require('./auth')
 
 const typeDefs = gql`
 	${fs.readFileSync(__dirname.concat('/schema.graphql'), 'utf8')}
@@ -42,7 +44,13 @@ function createServer() {
 		resolverValidationOptions: {
 			requireResolversForResolverType: false,
 		},
-		context: (req) => ({ ...req, db }),
+		async context ({ req }) {
+			const token = _.get(req, 'headers.authorization', null)
+			console.log('token', token)
+			const user = token ? await auth.getUser(db, token) : null
+
+			return { ...req, db, user, token }
+		}
 	});
 }
 

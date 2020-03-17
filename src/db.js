@@ -2,43 +2,52 @@ const Sequelize = require('sequelize');
 
 // these should come from env vars
 const Conn = new Sequelize('postgres', 'postgres', 'dbpassword', {
-	host: process.env.DB_HOSTNAME,
+	host: process.env.DB_HOSTNAME || 'localhost',
 	dialect: 'postgres',
+	logging: false
 });
 
-// const User = Conn.define('user', {
-// 	email: {
-// 		type: Sequelize.STRING,
-// 		allowNull: false,
-// 		validate: {
-// 			isEmail: true,
-// 		},
-// 		unique: {
-// 			args: true,
-// 			msg: 'Email address already in use!',
-// 		},
-// 	},
-// 	fullName: {
-// 		type: Sequelize.STRING,
-// 		allowNull: false,
-// 	},
-// 	phoneNumber: {
-// 		type: Sequelize.INTEGER,
-// 		allowNull: true,
-// 	},
-// 	password: {
-// 		type: Sequelize.STRING,
-// 		allowNull: false,
-// 	},
-// 	resetToken: {
-// 		type: Sequelize.STRING,
-// 		allowNull: true,
-// 	},
-// 	resetTokenExpiry: {
-// 		type: Sequelize.FLOAT,
-// 		allowNull: true,
-// 	},
-// });
+Conn.define('token', {
+	token: {
+		type: Sequelize.STRING,
+		allowNull: false,
+		primaryKey: true,
+	},
+}, { timestamps: false })
+
+Conn.define('user', {
+	email: {
+		type: Sequelize.STRING,
+		allowNull: false,
+		validate: {
+			isEmail: true,
+		},
+		unique: {
+			args: true,
+			msg: 'Email address already in use!',
+		},
+	},
+	fullName: {
+		type: Sequelize.STRING,
+		allowNull: false,
+	},
+	phoneNumber: {
+		type: Sequelize.INTEGER,
+		allowNull: true,
+	},
+	password: {
+		type: Sequelize.STRING,
+		allowNull: false,
+	},
+	resetToken: {
+		type: Sequelize.STRING,
+		allowNull: true,
+	},
+	resetTokenExpiry: {
+		type: Sequelize.FLOAT,
+		allowNull: true,
+	},
+});
 
 const CoreProcess = Conn.define('coreprocess', {
 	description: {

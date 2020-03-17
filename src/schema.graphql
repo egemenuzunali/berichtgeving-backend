@@ -1,6 +1,13 @@
 type Mutation {
 	addUser(name: String!): User!
 	runMigration: SuccessMessage!
+
+	# Authentication
+	signIn (
+		username: String!
+		password: String!
+	): SignInMessage
+	signOut: SuccessMessage
 }
 
 type Query {
@@ -9,6 +16,7 @@ type Query {
 	getallDirections: [Direction]!
 	getDirectionByCluster(clusterId: ID!): [Direction]!
 	getAllCoreProcesses(directionId: ID!): [CoreProcess]!
+	getCurrentUser: User
 }
 
 type SuccessMessage {
@@ -33,5 +41,12 @@ type Direction {
 }
 
 type User {
-	name: String!
+	id: Int!,
+	fullName: String!
+	email: String!
+}
+
+type SignInMessage {
+	user: User!
+	token: String!
 }
